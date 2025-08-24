@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+void insertAtSortedStack(stack<int>&st, int val){
+	if(st.empty()){
+		st.push(val);
+		return;
+	}
+	if(!st.empty() && st.top() < val){
+		st.push(val);
+		return;
+	}
+	  int topE = st.top();
+	   st.pop();
+	   insertAtSortedStack(st,val);
+	   st.push(topE);
+
+}
+void print(stack<int>&st){
+	while(!st.empty()){
+		cout<<st.top()<<" ";
+		st.pop();
+	}
+}
+int main(){
+	stack<int>st;
+	st.push(10);
+	st.push(20);
+	st.push(30);
+	st.push(40);
+	st.push(50);
+	int val = 35;
+	insertAtSortedStack(st, val);
+	print(st);
+	return 0;
+}
